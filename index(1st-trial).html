@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+    margin: 0;
+    height: 100%;
+    overflow-x: clip;  
+    }
+
+   /* @font-face {
+	font-family: "ornamental-script";
+	src: url("../TypeMarket/fonts/ornamental-script.ttf");
+} */
+
+    *, *::before, *::after {    box-sizing: border-box;    /* prevent sideways scroll; fallback below if needed 
+    source: Google AI*/
+    }
+
+        body {
+    margin: 0;
+        }
+  
+         .logo-landing {
+        min-height: 50svh;
+        padding: 0 clamp(4rem, 
+        12vw, 20rem);
+        display: grid;
+        place-items: center;
+        line-height: 1em;
+
+        
+        /* animation */
+        animation-name:     colorChange;
+        animation-duration: 7s;
+        animation-iteration-count:  infinite;
+        animation-timing-function: linear infinite;
+  }
+   .logo-landing img {
+        display: block;
+        width: clamp(240px, 40vmin, 600px); /* scale with viewport, bounded */
+        max-width: 100%;                    /* respect padding on narrow screens */
+        height: auto;                       /* keep aspect ratio */
+        max-height: 80vh;                   /* avoid overflow on short viewports */
+   }
+
+    @keyframes colorChange {
+        0% { background-color: #0097bc; }
+        25% { background-color: #1f9b71; }
+        50% { background-color:    #e1c054; }
+        75% { background-color: #e97571; }
+        100% { background-color:    #0097bc; }
+         }
+
+        /* referenced from https://clarasees.github.io/jeepnetica/ 
+        {
+        min-height: 100vh;
+        padding: 0 clamp(4rem, 12vw, 20rem);
+        place-content: center;
+        font-family: "JeepneticaVF",    sans-serif;
+        font-variation-settings: "BEEP" 0;
+        transition: font-variation-settings .   2s;
+        font-size: 3vw;
+        line-height: 2em;
+        text-align: center;
+        word-break: break-all;} 
+
+        & Google AI
+
+        
+        */
+    
+
+       /* .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+        }
+
+        .container div {
+
+            background-color: whitesmoke;
+            height: 100%;
+            border-radius: 5%;
+
+        } */
+
+
+        @media only screen and (max-width:500px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Auto-wrap into as many columns as fit */
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: clamp(10px, 2vw, 20px);
+            padding: clamp(12px, 3vw, 24px);
+            width: min(100%, 1200px);
+            margin-inline: auto;       /* center the grid container */
+}
+    
+        .keyboard-key {
+            /* Make each key fluid and center its text */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: 2px solid black;
+            color: black;
+
+            /* Fluid sizing */
+            padding: clamp(8px, 2vw, 16px);
+            font-size: clamp(16px, 4vw, 28px);
+
+            /*uniform tiles */
+            aspect-ratio: 3 / 2;
+            border-radius: 8px;
+
+            /* Prevent long labels from blowing out */
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
+
+
+        /* loading variable fonts! */
+            @font-face {
+                font-family: "Zenek Pixel VF";
+                src: url("/fonts/zenek-pixel-vf.woff2") format("woff2");
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "Poly Pixel VF";
+                src: url("/fonts/poly-sans-tanaka-remix.woff2") format("woff2");
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "Ornamental Script VF";
+                src: url("/fonts/ornamental-script-vf.woff2")               format("woff2");
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+        /* Classes using axis tags + animations */
+        .font1 {
+            font-family: "Zenek Pixel VF";
+            font-variation-settings: "POSI" 100;
+            animation: posiPulse 1.2s ease-in-out infinite alternate;
+            }
+
+        .font2 {
+            font-family: "Poly Pixel VF";
+            font-variation-settings: "POLY" 100;
+            animation: polyPulse 1.2s ease-in-out infinite alternate;
+            }
+
+        .font3 {
+            font-family: "Ornamental Script VF";
+            font-variation-settings: "GROW" 0;          /* start */
+            animation: growPulse 2s ease-in-out infinite alternate;
+            }
+
+        /* keyframe names */
+        @keyframes posiPulse {
+            from { font-variation-settings: "POSI" 0;   }
+            to   { font-variation-settings: "POSI" 100; }
+        }
+        @keyframes polyPulse {
+            from { font-variation-settings: "POLY" 0;   }
+            to   { font-variation-settings: "POLY" 100; }
+        }
+        @keyframes growPulse {
+            from { font-variation-settings: "GROW" 0;   }
+            to   { font-variation-settings: "GROW" 100; }
+        }
+
+        /* .font1 {
+            font-family: "zenek-pixel" ;
+            font-variation-settings: "posi" 100;
+            animation-name: animation1;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+        .font2 {
+            font-family:"poly-sans-tanaka-remix";
+            font-variation-settings: "poly" 100;
+        }
+        .font3 {
+            font-family: "ornamental-script";
+            font-variation-settings: "grow" 100;
+        } 
+        
+        
+        @keyframes animation1 {
+            0% {
+                font-variation-settings: "posi" 100;
+            }
+            100% {
+                font-variation-settings: "posi" 0;
+            }
+        }
+
+        @keyframes animation2 {
+            0% {
+                font-variation-settings: "poly" 100;
+            }
+            100% {
+                font-variation-settings: "poly" 0;
+            }
+        }
+
+        @keyframes animation1 {
+            0% {
+                font-variation-settings: "grow" 100;
+            }
+            100% {
+                font-variation-settings: "grow" 0;
+            }
+        } */
+
+
+    </style>
+</head>
+
+
+<body>
+    <div class="logo-landing"> 
+        <img src="svgs/type-market-logo.svg" alt="Type Market">
+    </div>
+
+    <div class="keyboard">
+
+        <a href="/fonts-woff/zenek-pixel.woff2" class="keyboard-key font1">Zenek Pixel VF</a>
+        <a href="/fonts-woff/pixel-sans-tanaka-remix.woff2" class="keyboard-key font2">Poly Pixel VF</a>
+        <a href="/fonts-woff/pixel-sans-tanaka-remix.woff2" class="keyboard-key font3">Ornamental Script VF</a>
+     
+        
+
+    </div>
+
+    <!-- <div class="container">
+        <div>
+            <img src="Gifs/ZenekPixel.gif" alt="Zenek Pixel">
+        </div>
+
+        <div class="container">
+            Polypix
+        </div>
+
+        <div class="container">
+            Ornament Script
+        </div>
+
+    </div> -->
+
+    <script>
+    </script>
+</body>
+
+</html>

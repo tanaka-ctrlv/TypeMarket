@@ -1,0 +1,217 @@
+/* loading variable fonts! */
+@font-face {
+	font-family: "Zenek Pixel";
+	src: url("fonts/zenek-pixel.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Poly Pixel VF";
+	src: url("fonts/pixel-sans-tanaka-remix.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Ornamental Script VF";
+	src: url("fonts/ornamental-script.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Apply to all elements */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.logo-landing {
+	min-height: 50svh;
+	padding: 0 clamp(4rem,
+			12vw, 20rem);
+	display: grid;
+	place-items: center;
+	line-height: 1em;
+
+
+	/* background color animation */
+	animation-name: colorChange;
+	animation-duration: 7s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear infinite;
+}
+
+.logo-landing img {
+	display: block;
+	width: clamp(240px, 40vmin, 600px);
+	/* scale with viewport, bounded */
+	max-width: 100%;
+	/* respect padding on narrow screens */
+	height: auto;
+	/* keep aspect ratio */
+	max-height: 80vh;
+	/* avoid img overflow on short viewports */
+}
+
+@keyframes colorChange {
+	0% {
+		background-color: #0097bc;
+	}
+
+	25% {
+		background-color: #1f9b71;
+	}
+
+	50% {
+		background-color: #e1c054;
+	}
+
+	75% {
+		background-color: #e97571;
+	}
+
+	100% {
+		background-color: #0097bc;
+	}
+}
+
+/* referenced from https://clarasees.github.io/jeepnetica/ 
+	{
+	min-height: 100vh;
+	padding: 0 clamp(4rem, 12vw, 20rem);
+	place-content: center;
+	font-family: "JeepneticaVF",    sans-serif;
+	font-variation-settings: "BEEP" 0;
+	transition: font-variation-settings .   2s;
+	font-size: 3vw;
+	line-height: 2em;
+	text-align: center;
+	word-break: break-all;} 
+	& Google AI */
+
+
+@media only screen and (max-width:500px) {
+	.container {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* auto-wrap into as many columns as fit */
+.keyboard {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: clamp(10px, 2vw, 20px);
+	padding: clamp(12px, 3vw, 24px);
+	width: min(100%, 1200px);
+	margin-inline: auto;
+	/* to center the grid container */
+}
+
+.zenek-pixel-key {
+	/* Make each key fluid and center its text */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	border: 2px solid #1f9b71;
+	color: black;
+	font-family: "Zenek Pixel";
+	font-variation-settings: "POSI" 100;
+	animation: posi-pulse 2s ease-in-out infinite alternate;
+
+	/* Fluid sizing */
+	padding: clamp(8px, 2vw, 16px);
+	font-size: clamp(16px, 4vw, 28px);
+
+	/*uniform tiles */
+	aspect-ratio: 3 / 2;
+	border-radius: 8px;
+
+	/* Prevent long labels from blowing out */
+	word-break: break-word;
+	overflow-wrap: anywhere;
+}
+
+.poly-pixel-key {
+	/* Make each key fluid and center its text */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	border: 2px solid #1f9b71;
+	color: black;
+	font-family: "Poly Pixel VF";
+	font-variation-settings: "POLY" 100;
+	animation: poly-pulse 1.2s ease-in-out infinite alternate;
+
+	/* Fluid sizing */
+	padding: clamp(8px, 2vw, 16px);
+	font-size: clamp(16px, 4vw, 28px);
+
+	/*uniform tiles */
+	aspect-ratio: 3 / 2;
+	border-radius: 8px;
+
+	/* Prevent long labels from blowing out */
+	word-break: break-word;
+	overflow-wrap: anywhere;
+}
+
+.ornamental-script-key {
+	/* Make each key fluid and center its text */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	border: 2px solid #1f9b71;
+	color: black;
+	font-family: "Ornamental Script VF";
+	font-variation-settings: "GROW" 0;
+	animation: grow-pulse 2s ease-in-out infinite alternate;
+
+	/* Fluid sizing */
+	padding: clamp(8px, 2vw, 16px);
+	font-size: clamp(16px, 4vw, 28px);
+
+	/*uniform tiles */
+	aspect-ratio: 3 / 2;
+	border-radius: 8px;
+
+	/* Prevent long labels from blowing out */
+	word-break: break-word;
+	overflow-wrap: anywhere;
+}
+
+
+/* keyframe names */
+@keyframes posi-pulse {
+	from {
+		font-variation-settings: "POSI" 0;
+	}
+
+	to {
+		font-variation-settings: "POSI" 100;
+	}
+}
+
+@keyframes poly-pulse {
+	from {
+		font-variation-settings: "POLY" 0;
+	}
+
+	to {
+		font-variation-settings: "POLY" 100;
+	}
+}
+
+@keyframes grow-pulse {
+	from {
+		font-variation-settings: "GROW" 0;
+	}
+
+	to {
+		font-variation-settings: "GROW" 100;
+	}
+}
