@@ -1,4 +1,4 @@
-/* VARIABLE FONTS */
+/* loading variable fonts! */
 @font-face {
 	font-family: "Zenek Pixel";
 	src: url("fonts/zenek-pixel.woff2") format("woff2");
@@ -20,45 +20,41 @@
 	font-display: swap;
 }
 
-/* RESET */
+/* Apply to all elements */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-body {
-	background-color: #ffffff;
-}
-
-/* TOP LOGO AREA */
 .logo-landing {
 	min-height: 50svh;
-	padding: 0 clamp(4rem, 12vw, 20rem);
+	padding: 0 clamp(4rem,
+			12vw, 20rem);
 	display: grid;
 	place-items: center;
-	position: relative;
-	line-height: 1;
-	animation: colorChange 7s linear infinite;
+	line-height: 1em;
+
+
+	/* background color animation */
+	animation-name: colorChange;
+	animation-duration: 7s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear infinite;
 }
 
-.logo-small {
-	position: absolute;
-	top: 12px;
-	left: 12px;
-	width: 60px;
-	height: auto;
-}
-
-.logo-main {
+.logo-landing img {
 	display: block;
 	width: clamp(240px, 40vmin, 600px);
+	/* scale with viewport, bounded */
 	max-width: 100%;
+	/* respect padding on narrow screens */
 	height: auto;
+	/* keep aspect ratio */
 	max-height: 80vh;
+	/* avoid img overflow on short viewports */
 }
 
-/* BACKGROUND COLOR LOOP */
 @keyframes colorChange {
 	0% {
 		background-color: #0097bc;
@@ -81,112 +77,40 @@ body {
 	}
 }
 
-/* EDITION SECTIONS */
-.edition {
-	background-color: #1f9b71;
-	padding-block: clamp(24px, 6vw, 48px);
-}
-
-/* MARQUEE STRIPS */
-.marquee {
-	background-color: #000000;
-	color: #ffffff;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-.marquee-track {
-	display: inline-block;
-	padding-block: 8px;
-	padding-inline: 16px;
-	font-family: "Zenek Pixel", system-ui, sans-serif;
-	font-size: clamp(14px, 2vw, 18px);
-	animation: marquee 15s linear infinite;
-}
-
-@keyframes marquee {
-	from {
-		transform: translateX(0);
-	}
-
-	to {
-		transform: translateX(-50%);
-	}
-}
-
-/* WHITE PANELS */
-.edition-body {
-	max-width: 1200px;
-	margin: clamp(16px, 4vw, 32px) auto;
-	padding: clamp(16px, 4vw, 32px);
-	background-color: #ffffff;
-	display: flex;
-	gap: clamp(16px, 4vw, 40px);
-	align-items: center;
-	justify-content: space-between;
-}
-
-.edition-body > * {
-	flex: 1;
-}
-
-/* BURST BUTTONS */
-.burst {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+/* referenced from https://clarasees.github.io/jeepnetica/ 
+	{
+	min-height: 100vh;
+	padding: 0 clamp(4rem, 12vw, 20rem);
+	place-content: center;
+	font-family: "JeepneticaVF",    sans-serif;
+	font-variation-settings: "BEEP" 0;
+	transition: font-variation-settings .   2s;
+	font-size: 3vw;
+	line-height: 2em;
 	text-align: center;
-	font-family: "Zenek Pixel", system-ui, sans-serif;
-	font-size: clamp(16px, 3vw, 24px);
-	padding: 1rem;
-	color: #000000;
-	width: min(220px, 60vw);
-	aspect-ratio: 1;
-	/* simple starburst shape */
-	clip-path: polygon(
-		50% 0%,
-		63% 12%,
-		80% 10%,
-		88% 25%,
-		100% 35%,
-		94% 52%,
-		100% 68%,
-		85% 75%,
-		80% 90%,
-		62% 88%,
-		50% 100%,
-		38% 88%,
-		20% 90%,
-		15% 75%,
-		0% 68%,
-		6% 52%,
-		0% 35%,
-		12% 25%,
-		20% 10%,
-		37% 12%
-	);
+	word-break: break-all;} 
+	& Google AI */
+
+
+@media only screen and (max-width:500px) {
+	.container {
+		grid-template-columns: 1fr;
+	}
 }
 
-.burst span {
-	display: block;
-	padding-inline: 0.5rem;
+/* auto-wrap into as many columns as fit */
+.keyboard {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: clamp(10px, 2vw, 20px);
+	padding: clamp(12px, 3vw, 24px);
+	width: min(100%, 1200px);
+	margin-inline: auto;
+	/* to center the grid container */
 }
 
-/* different burst colors per edition */
-.burst-zenek {
-	background-color: #e97571;
-}
-
-.burst-ornamental {
-	background-color: #e1c054;
-}
-
-.burst-poly {
-	background-color: #0097bc;
-}
-
-/* SPECIMEN KEYS (keep your existing animations) */
 .zenek-pixel-key {
+	/* Make each key fluid and center its text */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -196,15 +120,22 @@ body {
 	font-family: "Zenek Pixel";
 	font-variation-settings: "POSI" 100;
 	animation: posi-pulse 2s ease-in-out infinite alternate;
+
+	/* Fluid sizing */
 	padding: clamp(8px, 2vw, 16px);
 	font-size: clamp(16px, 4vw, 28px);
+
+	/*uniform tiles */
 	aspect-ratio: 3 / 2;
 	border-radius: 8px;
+
+	/* Prevent long labels from blowing out */
 	word-break: break-word;
 	overflow-wrap: anywhere;
 }
 
 .poly-pixel-key {
+	/* Make each key fluid and center its text */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -214,34 +145,48 @@ body {
 	font-family: "Poly Pixel VF";
 	font-variation-settings: "POLY" 100;
 	animation: poly-pulse 1.2s ease-in-out infinite alternate;
+
+	/* Fluid sizing */
 	padding: clamp(8px, 2vw, 16px);
 	font-size: clamp(16px, 4vw, 28px);
+
+	/*uniform tiles */
 	aspect-ratio: 3 / 2;
 	border-radius: 8px;
+
+	/* Prevent long labels from blowing out */
 	word-break: break-word;
 	overflow-wrap: anywhere;
 }
 
 .ornamental-script-key {
+	/* Make each key fluid and center its text */
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	text-align: center;
+	justify-content: center;
 	text-decoration: none;
 	border: 2px solid #1f9b71;
 	color: black;
 	font-family: "Ornamental Script VF";
 	font-variation-settings: "GROW" 0;
 	animation: grow-pulse 2s ease-in-out infinite alternate;
+
+	/* Fluid sizing */
 	padding: clamp(8px, 2vw, 16px);
 	font-size: clamp(16px, 4vw, 28px);
+
+	/*uniform tiles */
 	aspect-ratio: 3 / 2;
 	border-radius: 8px;
+
+	/* Prevent long labels from blowing out */
 	word-break: break-word;
 	overflow-wrap: anywhere;
 }
 
-/* VARIABLE FONT ANIMATIONS */
+
+/* keyframe names */
 @keyframes posi-pulse {
 	from {
 		font-variation-settings: "POSI" 0;
@@ -269,16 +214,5 @@ body {
 
 	to {
 		font-variation-settings: "GROW" 100;
-	}
-}
-
-/* SMALL SCREEN LAYOUT */
-@media (max-width: 700px) {
-	.edition-body {
-		flex-direction: column;
-	}
-
-	.burst {
-		margin-inline: auto;
 	}
 }
