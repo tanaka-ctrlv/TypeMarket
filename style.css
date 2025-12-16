@@ -42,13 +42,13 @@ body {
   animation: colorChange 7s linear infinite;
 }
 
-.logo-small {
+/*.logo-small {
   position: absolute;
   top: 12px;
   left: 12px;
   width: 60px;
   height: auto;
-}
+}*/
 
 .logo-main {
   display: block;
@@ -56,6 +56,17 @@ body {
   max-width: 100%;
   height: auto;
   max-height: 80vh;
+}
+
+/* foundry description under logo */
+.foundry-desc {
+  margin-top: 1rem;
+  max-width: 70ch;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.45;
+  color: rgba(0,0,0,0.85);
 }
 
 /* BACKGROUND COLOR LOOP */
@@ -97,6 +108,26 @@ body {
   font-size: clamp(14px, 2vw, 18px);
 }
 
+/* specimen links buttons */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  border: 1px solid rgba(0,0,0,0.6);
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 0.95rem;
+  background: #fff;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+.btn:hover { transform: translateY(-1px); opacity: 0.95; }
+.btn:active { transform: translateY(0px); opacity: 0.9; }
+
+.specimen-btn {
+  border-color: rgba(0,0,0,0.65);
+}
+
 /* speed + direction variety */
 .marquee.fast .marquee-track { animation-duration: 10s; }
 .marquee.slow .marquee-track { animation-duration: 18s; }
@@ -113,7 +144,7 @@ body {
   width: 100%;
 }
 
-/* inner layout stays nicely readable */
+/* inner layout stays readable */
 .edition-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -130,7 +161,7 @@ body {
   flex: 1;
 }
 
-/* DOWNLOAD BURST BUTTONS (now real links) */
+/* DOWNLOAD BURST BUTTONS (might add a hrefs to specimens in the future for the others) */
 .download-btn {
   text-decoration: none;
   cursor: pointer;
@@ -183,6 +214,32 @@ body {
 .burst span {
   display: block;
   padding-inline: 0.5rem;
+}
+
+/* download svg inside burst */
+.download-svg {
+  width: 42px;
+  height: 42px;
+  display: block;
+  margin: 0 auto 0.55rem;
+}
+
+/* infinite back-and-forth rotation 
+.wiggle {
+  transform-origin: 50% 50%;
+  animation: wiggle-rotate 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes wiggle-rotate {
+  from { transform: rotate(-10deg); }
+  to   { transform: rotate(10deg); }
+}*/
+
+/* keep download button layout stacked */
+.download-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .burst-zenek { background-color: #e97571; }
